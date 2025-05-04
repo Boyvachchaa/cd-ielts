@@ -1,0 +1,37 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    .full_mock_test_component {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .full_component_items{
+            max-width: 830px;
+            background-color: #2196F6;
+        
+            .component_head {
+                background-color: #244BC5;
+                color: #fff;
+                text-align: center;
+            }
+
+            .component_main {
+                max-width: 780px;
+                padding: 20px;
+
+                .main_items {
+                    max-width: 780px;
+                    background-color: #FDFDFD;
+                    padding: 20px;
+                    text-align: center;
+
+                    p {
+                        max-width: 500px;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,8 +1,16 @@
-import React from 'react'
+import AdminNavbar from '../../../ui/adminNavbar/AdminNavbar'
+import AdminHeader from '../../../ui/adminHeader/AdminHeader'
 
 const Results = () => {
   return (
-    <div>Results</div>
+    <div className='add-test'>
+        <AdminNavbar />
+        <div className="main_content">
+          <AdminHeader />
+          
+          Results
+        </div>
+    </div>
   )
 }
 

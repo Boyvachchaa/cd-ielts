@@ -1,0 +1,17 @@
+.listening_rules {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .rules {
+        background-color: #2196F6;
+        max-width: 1170px;
+
+        .rules_item {
+            background-color: #fff;
+            max-width: 1060px;
+            text-align: center;
+        }
+    }
+}
+

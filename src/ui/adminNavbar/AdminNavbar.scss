@@ -1,0 +1,41 @@
+aside {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20%;
+    height: 100vh;
+    background-color: #007bff;
+    color: #fff;
+    padding: 20px;
+    overflow-y: auto; 
+    z-index: 1000; 
+  
+
+    img {
+        width: 64px;
+        height: 64px;
+        margin-bottom: 24px;
+        background-color: #fff;
+    }
+
+    div {
+        display: flex;
+        flex-direction: column;
+
+        .menu {
+            padding: 10px 16px;
+            margin: 4px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            cursor: pointer;
+            border-radius: 4px;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            -ms-border-radius: 4px;
+            -o-border-radius: 4px;
+            text-align: center;
+        }
+    }
+}
+
+

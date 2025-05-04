@@ -1,0 +1,35 @@
+.login {
+    width: 100vw;
+    height: 100vh;
+    background: no-repeat center url(../../assets/login-background.png) ;
+    background-color: #244BC5;
+
+    .login_item {
+        background-color: #fff;
+    }
+
+}
+
+.form-floating {
+    display: flex;
+    flex-direction: column;
+    input {
+        color: #264ECA;
+        border: 1px solid #264ECA;
+        border-radius: 4px;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        -ms-border-radius: 4px;
+        -o-border-radius: 4px;
+        outline: none;
+    }
+
+    input::placeholder {
+        color: #264ECA;
+    }
+
+    input:focus {
+        color: #08257a;
+        border: 1px solid #011d6e;
+    }
+}
