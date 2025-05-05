@@ -14,7 +14,7 @@ const AdminNavbar = () => {
                     className='menu'
                     to="/users"
                 >
-                    Users
+                    Students
                 </Link>
 
                 <Link

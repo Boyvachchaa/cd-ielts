@@ -79,7 +79,7 @@ const Users = () => {
             />
           </div>
           <Link to="/addUser" className="add_user">
-            Add User
+            Add Student
           </Link>
         </div>
 

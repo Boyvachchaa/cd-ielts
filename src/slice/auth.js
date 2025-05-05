@@ -1,11 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { setItem } from '../components/helpers/persistance-storage';
+import { getItem, removeItem, setItem, } from '../components/helpers/persistance-storage';
+
+const token = localStorage.getItem('token');
+const user = {
+  username: getItem('username'),
+  is_student: getItem('is_student') === 'true',
+  is_staff: getItem('is_staff') === 'true',
+  id: getItem('user_id'),
+};
 
 const initialState = {
-  user: null,
-  access_token: null,
-  refresh_token: null,
-  isLoggedIn: false,
+  user: token ? user : null,
+  access_token: token || null,
+  isLoggedIn: !!token,
   isLoading: false,
   error: null,
 };
@@ -24,15 +31,13 @@ const authSlice = createSlice({
       state.isLoading = false;
       state.user = user;
       state.access_token = token;
-      state.error = null;
 
-      // Persist some data in localStorage
       setItem('token', token);
       setItem('username', user.username);
+      console.log(localStorage.getItem('username', user.username))
       setItem('is_student', user.is_student);
       setItem('is_staff', user.is_staff);
       setItem('user_id', user.id);
-      setItem('isLoggedIn', true);
     },
     loginUserFailure: (state, action) => {
       state.isLoading = false;
@@ -42,19 +47,11 @@ const authSlice = createSlice({
       state.user = null;
       state.isLoggedIn = false;
       state.access_token = null;
-      state.refresh_token = null;
-      localStorage.clear();
-    },
-    registerUserStart: (state) => {
-      state.isLoading = true;
-    },
-    registerUserSuccess: (state) => {
-      state.isLoggedIn = true;
-      state.isLoading = false;
-    },
-    registerUserFailure: (state) => {
-      state.isLoading = false;
-      state.error = 'Registration failed';
+      removeItem('token');
+      removeItem('username');
+      removeItem('is_student');
+      removeItem('is_staff');
+      removeItem('user_id');
     },
   },
 });
