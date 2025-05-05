@@ -35,11 +35,11 @@ const Login = () => {
       const response = await AuthService.userLogin({ username, password });
       const decoded = jwtDecode(response.access);
       const token = response.access;
-      console.log(token)
 
       const userInfoRes = await AuthService.detectAdmin(decoded.user_id, token);
       const userInfo = userInfoRes.data;
-      console.log(userInfoRes)
+      console.log("UserInfo.user",userInfo.username)
+      localStorage.setItem("username", userInfo.username)
 
       dispatch(loginUserSuccess({
         token,

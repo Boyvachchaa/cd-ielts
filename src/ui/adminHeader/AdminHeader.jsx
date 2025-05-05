@@ -18,7 +18,7 @@ const AdminHeader = () => {
 
   return (
     <div className="header">
-      <span className="admin-label">{user?.username || 'User'}</span>
+      <span className="admin-label">{localStorage.getItem('username')}</span>
       <button className="logout-button" onClick={handleLogout}>Logout</button>
     </div>
   );

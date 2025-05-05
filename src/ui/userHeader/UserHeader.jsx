@@ -29,7 +29,7 @@ const UserHeader = () => {
         </div>
         <nav className="d-flex align-items-center justify-content-center">
           <FontSizeChanger />
-          <p className="mx-4 mb-0 candidate_name">{user?.username || 'User'}  </p>
+          <p className="mx-4 mb-0 candidate_name">{localStorage.getItem('username')}</p>
           <button className="btn btn-primary ms-3" onClick={handleLogout}>Logout</button>
         </nav>
       </div>
