@@ -4,19 +4,32 @@ import { useState } from "react";
 import AdminNavbar from '../../../ui/adminNavbar/AdminNavbar'
 import AdminHeader from "../../../ui/adminHeader/AdminHeader";
 
+// QuestionTypes
+import FullText from "../../questionsAndText/fullText/FullText";
+import MultipleChoiseOne from '../../questionsAndText/multipleChoiseOne/MultipleChoiseOne'
+import MultipleChoiseTwo from "../../questionsAndText/multipleChoiseTwo/MultipleChoiseTwo";
+import NoteCompletion from "../../questionsAndText/noteCompletion/NoteCompletion";
+import SummaryCompletion from "../../questionsAndText/summeryCompletionText/SummeryCompletionText";
+import SummaryCompletionList from "../../questionsAndText/summeryCompletionLIst/SummeryCompletionList";
+import SentenceCompletion from "../../questionsAndText/sentenceCompletion/SentenceCompletion";
+import FlowChart from "../../questionsAndText/flowChart/FlowChart";
+
+import MatchingSentenceEndings from "../../questionsAndText/matchingSentenceEndings/MatchingSentenceEndigs";
+
+
 import './AddTest.scss'
 
-const AdminTestPage = () => {
+const AddTest = () => {
   const [activeTab, setActiveTab] = useState("Reading");
   const [activePassage, setActivePassage] = useState("Passage 1");
   const [questionType, setQuestionType] = useState("");
   const [questionTitle, setQuestionTitle] = useState("");
   const [questionContent, setQuestionContent] = useState("");
-  const [imageFile, setImageFile] = useState(null);
 
   const tabs = ["Reading", "Listening", "Writing"];
   const passages = ["Passage 1", "Passage 2", "Passage 3", "Passage 4"];
   const questionTypes = [
+    "Full Text",
     "Multiple choice (1)",
     "Multiple choice (2)",
     "Note completion",
@@ -97,25 +110,19 @@ const AdminTestPage = () => {
               </div>
 
               <div className="question_zone">
-                <textarea
-                  type="text"
-                  placeholder="Enter question full text"
-                  value={questionTitle}
-                  onChange={(e) => setQuestionTitle(e.target.value)}
-                />
-                <textarea
-                  placeholder="Write questions"
-                  value={questionContent}
-                  onChange={(e) => setQuestionContent(e.target.value)}
-                ></textarea>
+                {questionType === "Full Text" && <FullText />}
+                {questionType === "Multiple choice (1)" && <MultipleChoiseOne />}
+                {questionType === "Multiple choice (2)" && <MultipleChoiseTwo />}
+                {questionType === "Note completion" && <NoteCompletion />}
+                {questionType === "Summary completion (text)" && <SummaryCompletion />}
+                {questionType === "Summary completion (list)" && <SummaryCompletionList />}
+                {questionType === "Sentence completion" && <SentenceCompletion />}
+                {questionType === "Flow-chart completion" && <FlowChart />}
+                {questionType === "Matching sentence endings" && <MatchingSentenceEndings />}
 
-                {questionType === "Flow-chart completion" && (
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={(e) => setImageFile(e.target.files[0])}
-                  />
-                )}
+                {/* {questionType === "Full Text" && <FullText />}
+                {questionType === "Full Text" && <FullText />} */}
+                
               </div>
             </div>
           </div>
@@ -125,4 +132,4 @@ const AdminTestPage = () => {
   );
 };
 
-export default AdminTestPage;
+export default AddTest;

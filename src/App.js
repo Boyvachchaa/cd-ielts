@@ -9,6 +9,7 @@ import Users from './components/admin/users/Users';
 import Tests from './components/admin/tests/Tests';
 import Results from './components/admin/results/Results';
 import AddUser from './components/admin/addUser/AddUser';
+import AddTest from './components/admin/addTest/AddTest';
 
 import PrivateRoute from './components/PrivateRoute';
 
@@ -47,6 +48,7 @@ const App = () => {
               <Route path="/tests" element={<Tests />} />
               <Route path="/results" element={<Results />} />
               <Route path="/addUser" element={<AddUser />} />
+              <Route path='/addTest' element={<AddTest />} />
             </Route>
             <Route path="/" element={<Navigate to="/users" replace />} />
             <Route path="*" element={<Navigate to="/users" replace />} />

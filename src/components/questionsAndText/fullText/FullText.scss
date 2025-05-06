@@ -1,0 +1,12 @@
+.fulltext-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100vh;
+  
+    h5 {
+      font-size: 18px;
+      font-weight: bold;
+      color: #007bff;
+    }
+}

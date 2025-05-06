@@ -1,0 +1,106 @@
+.cq-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  
+    h5 {
+      font-size: 18px;
+      font-weight: bold;
+      color: #007bff;
+    }
+  
+    .error {
+      padding: 10px;
+      background-color: #ffdddd;
+      border: 1px solid red;
+      border-radius: 4px;
+      color: #a00;
+    }
+  
+    .question-block {
+      padding: 16px;
+      background-color: #ffffff;
+      border: 1px solid #007bff;
+      border-radius: 8px;
+  
+      .question-header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+  
+        input[type="text"] {
+          flex: 1;
+          padding: 8px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+  
+        .remove {
+          background-color: transparent;
+          color: red;
+          border: none;
+          font-size: 18px;
+          cursor: pointer;
+        }
+      }
+  
+      .options {
+        margin-top: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+  
+        .option-row {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+  
+          input[type="text"] {
+            flex: 1;
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+          }
+  
+          .remove {
+            background-color: transparent;
+            color: red;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+          }
+        }
+  
+        .add-option {
+          margin-top: 8px;
+          background-color: #f0f0f0;
+          border: 1px dashed #007bff;
+          padding: 6px 10px;
+          border-radius: 4px;
+          cursor: pointer;
+          color: #007bff;
+          font-weight: bold;
+        }
+      }
+    }
+  
+    .actions {
+      display: flex;
+      gap: 12px;
+  
+      button {
+        padding: 10px 14px;
+        background-color: #eee;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        cursor: pointer;
+  
+        &.submit {
+          background-color: #28a745;
+          color: white;
+          border-color: #28a745;
+        }
+      }
+    }
+  }
+  

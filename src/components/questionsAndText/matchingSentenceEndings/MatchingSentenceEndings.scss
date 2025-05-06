@@ -1,0 +1,45 @@
+.cq-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  
+    h5 {
+      font-size: 18px;
+      font-weight: bold;
+      color: #007bff;
+    }
+  
+    .input-section {
+      margin-bottom: 20px;
+  
+      textarea, input, select {
+        width: 100%;
+        margin-top: 6px;
+        padding: 8px;
+      }
+  
+      .question-row {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 10px;
+  
+        input {
+          flex: 2;
+        }
+  
+        select {
+          flex: 1;
+        }
+      }
+    }
+  
+    .submit-btn {
+      background-color: green;
+      color: white;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  }
+  
