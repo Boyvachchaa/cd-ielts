@@ -11,12 +11,14 @@ import Results from './components/admin/results/Results';
 import AddUser from './components/admin/addUser/AddUser';
 import AddTest from './components/admin/addTest/AddTest';
 
-import PrivateRoute from './components/PrivateRoute';
+// Route guards
+import AdminRoute from './routes/AdminRoute';
+import StudentRoute from './routes/StudentRoute';
 
 const App = () => {
+  const sizeOption = useSelector((state) => state.font.sizeOption);
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const isStudent = useSelector((state) => state.auth.user?.is_student);
-  const sizeOption = useSelector((state) => state.font.sizeOption);
 
   const getFontSize = () => {
     switch (sizeOption) {
@@ -30,30 +32,26 @@ const App = () => {
   return (
     <div style={{ fontSize: getFontSize(), transition: 'font-size 0.3s ease' }}>
       <Routes>
-        {!isLoggedIn ? (
-          <>
-            <Route path="/" element={<Login />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </>
-        ) : isStudent ? (
-          <>
-            <Route path="/main" element={<Main />} />
-            <Route path="/listeningrules" element={<ListeningRules />} />
-            <Route path="*" element={<Navigate to="/main" replace />} />
-          </>
-        ) : (
-          <>
-            <Route element={<PrivateRoute />}>
-              <Route path="/users" element={<Users />} />
-              <Route path="/tests" element={<Tests />} />
-              <Route path="/results" element={<Results />} />
-              <Route path="/addUser" element={<AddUser />} />
-              <Route path='/addTest' element={<AddTest />} />
-            </Route>
-            <Route path="/" element={<Navigate to="/users" replace />} />
-            <Route path="*" element={<Navigate to="/users" replace />} />
-          </>
-        )}
+        {/* Public route */}
+        <Route path="/" element={isLoggedIn ? <Navigate to={isStudent ? '/main' : '/users'} replace /> : <Login />} />
+
+        {/* Admin-only routes */}
+        <Route element={<AdminRoute />}>
+          <Route path="/users" element={<Users />} />
+          <Route path="/tests" element={<Tests />} />
+          <Route path="/results" element={<Results />} />
+          <Route path="/addUser" element={<AddUser />} />
+          <Route path="/addTest" element={<AddTest />} />
+        </Route>
+
+        {/* Student-only routes */}
+        <Route element={<StudentRoute />}>
+          <Route path="/main" element={<Main />} />
+          <Route path="/listeningrules" element={<ListeningRules />} />
+        </Route>
+
+        {/* Catch-all */}
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </div>
   );

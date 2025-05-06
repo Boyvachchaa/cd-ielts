@@ -3,10 +3,10 @@ import { getItem, removeItem, setItem, } from '../components/helpers/persistance
 
 const token = localStorage.getItem('token');
 const user = {
-  username: getItem('username'),
-  is_student: getItem('is_student') === 'true',
-  is_staff: getItem('is_staff') === 'true',
-  id: getItem('user_id'),
+  username: localStorage.getItem('username'),
+  is_student: localStorage.getItem('is_student') === 'true',
+  is_staff: localStorage.getItem('is_staff') === 'true',
+  id: localStorage.getItem('user_id'),
 };
 
 const initialState = {
@@ -34,8 +34,8 @@ const authSlice = createSlice({
 
       setItem('token', token);
       setItem('username', user.username);
-      console.log(localStorage.getItem('username', user.username))
-      setItem('is_student', user.is_student);
+      setItem('isLoggedIn', 'true');
+      setItem('is_student', user.is_student ? 'true' : 'false');
       setItem('is_staff', user.is_staff);
       setItem('user_id', user.id);
     },
@@ -47,6 +47,7 @@ const authSlice = createSlice({
       state.user = null;
       state.isLoggedIn = false;
       state.access_token = null;
+      setItem('isLoggedIn', !localStorage.isLoggedIn)
       removeItem('token');
       removeItem('username');
       removeItem('is_student');

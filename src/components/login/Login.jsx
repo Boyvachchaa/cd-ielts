@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
@@ -22,6 +22,15 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isLoading } = useSelector((state) => state.auth);
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const isStudent = useSelector((state) => state.auth.user?.is_student);
+
+  // Redirect if already logged in
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate(isStudent ? '/main' : '/users');
+    }
+  }, [isLoggedIn, isStudent, navigate]);
 
   const loginHandler = async (e) => {
     e.preventDefault();
@@ -53,6 +62,7 @@ const Login = () => {
       );
 
       setErrorMsg(null);
+      // Redirect based on role after successful login
       navigate(userInfo?.is_student ? '/main' : '/users');
     } catch (error) {
       const errDetail =

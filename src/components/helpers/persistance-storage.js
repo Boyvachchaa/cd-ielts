@@ -6,16 +6,6 @@ export const setItem = (key, value) => {
     }
   };
   
-  export const getItem = (key) => {
-    try {
-      const item = localStorage.getItem(key);
-      return item ? JSON.parse(item) : null;
-    } catch (error) {
-      console.error('Error getting item from localStorage');
-      return null;
-    }
-  };
-  
   export const removeItem = (key) => {
     try {
       localStorage.removeItem(key);

@@ -32,21 +32,6 @@ const UserService = {
     }
   },
 
-   // Detect if user is an admin
-   async detectAdmin(data, token) {
-    try { 
-      const response = await axios.get(`/users/${data.id}/`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      return response;
-    } catch (error) {
-      console.error('Error detecting admin:', error);
-      throw error;
-    }
-  },
-
   // Delete a user by ID
   async deleteUser(id, token) {
     try {
