@@ -53,6 +53,8 @@ const authSlice = createSlice({
       removeItem('is_student');
       removeItem('is_staff');
       removeItem('user_id');
+      removeItem('access_token');
+      removeItem('refresh_token');
     },
   },
 });

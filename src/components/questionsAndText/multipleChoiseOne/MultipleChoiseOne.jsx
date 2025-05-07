@@ -1,7 +1,7 @@
 import { useState } from "react";
-import './MultipleChoiseOne.scss';
+import "./MultipleChoiseOne.scss";
 
-const MultipleChoiseOne = () => {
+const MultipleChoiceOne = ({ onSave }) => {
   const [questions, setQuestions] = useState([
     { number: 1, text: "", options: [""], correctAnswer: null },
   ]);
@@ -61,17 +61,17 @@ const MultipleChoiseOne = () => {
   const validate = () => {
     for (const q of questions) {
       if (!q.text.trim()) {
-        setError("Every question must have text.");
+        setError("Har bir savolga matn yozilishi kerak.");
         return false;
       }
       for (const opt of q.options) {
         if (!opt.trim()) {
-          setError("Every option must have text.");
+          setError("Har bir variant to‘ldirilgan bo‘lishi kerak.");
           return false;
         }
       }
       if (q.correctAnswer === null || q.correctAnswer >= q.options.length) {
-        setError("Each question must have a selected correct answer.");
+        setError("Har bir savolda to‘g‘ri javob tanlanishi kerak.");
         return false;
       }
     }
@@ -79,24 +79,14 @@ const MultipleChoiseOne = () => {
     return true;
   };
 
-  const handleSubmit = async () => {
+  const handleSave = () => {
     if (!validate()) return;
-    try {
-      const response = await fetch("https://your-backend-api.com/questions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(questions),
-      });
-      if (!response.ok) throw new Error("Submission failed");
-      alert("Submitted successfully!");
-    } catch (error) {
-      alert("Submission failed");
-    }
+    onSave?.(questions); // faqat valid bo‘lsa yuboriladi
   };
 
   return (
     <div className="cq-container">
-      <h5>Multiple Choice (1)</h5>
+      <h5>Multiple Choice</h5>
       {error && <div className="error">{error}</div>}
 
       {questions.map((q, qIndex) => (
@@ -141,10 +131,10 @@ const MultipleChoiseOne = () => {
 
       <div className="actions">
         <button onClick={addQuestion}>+ Add Question</button>
-        <button className="submit" onClick={handleSubmit}>✅ Submit All</button>
+        <button className="submit" onClick={handleSave}>✅ Save Question</button>
       </div>
     </div>
   );
 };
 
-export default MultipleChoiseOne;
+export default MultipleChoiceOne;
