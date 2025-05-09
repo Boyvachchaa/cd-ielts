@@ -5,7 +5,7 @@ const UserService = {
     // Fetch all users
   async getUser(token) {
     try {
-      const response = await axios.get('/users/all', {
+      const response = await axios.get('/users/students', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
